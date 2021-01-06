@@ -8,6 +8,8 @@ import javax.xml.soap.Text;
 @Data
 public class User {
     int id;
-    Text name;
-    int password;
+    String name;
+    String password;
+    String username;
+    String role;
 }

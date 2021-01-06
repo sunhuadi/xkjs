@@ -7,9 +7,11 @@ import javax.xml.soap.Text;
 
 @Data
 public class Activity {
-    int aId;
-    Data startTime;
-    Data endTime;
-    Text detail;
-    Text teacher;
+    int Id;
+    Data startData;
+    Data endData;
+    String detail;
+    String teacher;
+    String sponsor;
+    String title;
 }
