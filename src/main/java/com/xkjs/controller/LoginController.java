@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @Controller
@@ -19,7 +20,7 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping("/logins")
-    public HashMap<String, String> Test(@RequestBody HashMap<String, String> user) {
+    public HashMap<String, String> Test(@RequestBody HashMap<String, String> user, HttpSession session) {
         HashMap<String, String> mp = new HashMap<String, String>();
         System.out.println("执行登陆控制！");
         String username = user.get("username");
@@ -27,7 +28,7 @@ public class LoginController {
         System.out.println(username);
         System.out.println(password);
         Subject subject = SecurityUtils.getSubject();
-
+        session.setAttribute("uid",3);
         //封装用户的登陆数据
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
@@ -38,7 +39,8 @@ public class LoginController {
             mp.put("msg", "密码正确，登陆成功。");
             mp.put("role", currentUser.getRole());
             mp.put("username", currentUser.getUsername());
-            ///System.out.println(currentUser.getPassword());
+            ///System.out.println(currentUser.getPassword());+
+            System.out.println(currentUser.getUid());
 
             return mp;
         } catch (UnknownAccountException e)//用户名不存在

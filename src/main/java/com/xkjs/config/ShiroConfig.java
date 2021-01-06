@@ -23,52 +23,44 @@ public class ShiroConfig {
         bean.setSecurityManager(defaultWebSecurityManager);
         //添加shito的内置过滤器
         /*anon无需认证
-         *authc：必须认证
-         *user:必须拥有记住我功能才能用
-         * perms：拥有对某个资源的权限才能访问
-         * role：拥有某个角色权限才能访问
-         * */
+        *authc：必须认证
+        *user:必须拥有记住我功能才能用
+        * perms：拥有对某个资源的权限才能访问
+        * role：拥有某个角色权限才能访问
+        * */
         //自定义过滤器配置
         LinkedHashMap<String, Filter> filtersMap = new LinkedHashMap<>();
-        filtersMap.put("roles",  new RoleFilter());
+        filtersMap.put("roles",  new com.xkjs.config.RoleFilter());
         bean.setFilters(filtersMap);
         //放在前面的权限比较高
-        bean.setFilters(filtersMap);
+       //bean.setFilters(filtersMap);
 
 
-        //开始正常使用
+       //开始正常使用
         Map<String, String> filterMap=new LinkedHashMap<>();
 
-        filterMap.put("/upload_news","roles[0,1]");
+        //filterMap.put("/upload_news","roles[0,1]");
 
-        //filterMap.put("/**","anon");
-        //filterMap.put("/upload_news","roles[1]");
-        //放行
-        filterMap.put("/test/**","anon");//必须在前
-        filterMap.put("/logins","anon");//必须在前
-        filterMap.put("/image/**","anon");//必须在前
-        filterMap.put("/js/**","anon");//必须在前
-        filterMap.put("/findAById","anon");//必须在前
-        filterMap.put("/findA","anon");//必须在前
 
+        filterMap.put("/**","anon");//必须在前
 
         //拦截
-        filterMap.put("/**","authc");//必须认证才能访问，
-        // filterMap.put("/logins","anon");//必须认证才能访问，
-        // filterMap.put("/test/update","authc");
-
-
+      // filterMap.put("/**","authc");//必须认证才能访问，
+       // filterMap.put("/logins","anon");//必须认证才能访问，
+       // filterMap.put("/test/update","authc");
 
         bean.setFilterChainDefinitionMap(filterMap);
         //设置跳转到登陆页面
         bean.setLoginUrl("/unlogin");
 
         bean.setUnauthorizedUrl("/unauthor");
+
+
         return bean;
     }
 
     @Bean(name="securityManager")
-    public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("userRealm") UserRealm userRealm){
+    public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("userRealm") com.xkjs.config.UserRealm userRealm){
         DefaultWebSecurityManager securityManager =new DefaultWebSecurityManager();
         //关联UserRealm
         securityManager.setRealm(userRealm);
@@ -76,9 +68,9 @@ public class ShiroConfig {
     }
     //创建realman对象
     @Bean
-    public UserRealm userRealm()
+    public com.xkjs.config.UserRealm userRealm()
     {
-        return new UserRealm();
+        return new com.xkjs.config.UserRealm();
     }
 
 

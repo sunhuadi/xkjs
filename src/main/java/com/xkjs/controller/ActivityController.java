@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,6 +48,13 @@ public class ActivityController {
         //   testMapper.testqurry();
         // id=2;
         return  signUpMapper.findAllByUid(uid);//通过活动id查询详情
+    }
+
+    @PostMapping("/insertA")
+    @ResponseBody
+    public int  insertA(@RequestBody Activity activity)//插入竞赛
+    {
+        return  activityMapper.insertActivity(activity);
     }
 
 

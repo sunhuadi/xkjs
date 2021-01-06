@@ -6,4 +6,29 @@
     <select id="findAllByUid" resultType="Activity">
         select activity.* from activity,signup where activity.aid=signup.aid and signup.uid=#{uid}
     </select>
+
+    <select id="findSByUidAid" resultType="signUp">
+        select * from signup where uId=#{uId} and aId=#{aId}
+    </select>
+
+    <insert id="insertActivity" parameterType="Activity">
+        insert into activity
+            (aid, startDate, endDate, detail, teacher, sponsor, title)
+            value(#{aid},#{startDate},#{endDate},#{detail},#{teacher},#{sponsor},#{title})
+    </insert>
+    <insert id="insertJoin" parameterType="signUp">
+        insert into signup
+            (aId,uId,stage)
+            value(#{aId},#{uId},#{stage})
+    </insert>
+    <update id="updataS" parameterType="signUp">
+        update signup set
+            stage=#{stage}
+        where uId=#{uId} and aId=#{aId}
+    </update>
+    <select id="findAllCheck" resultType="Bala">
+        select user.uid,activity.aid,user.name,activity.title,signup.stage
+        from user,signup,activity
+        where user.uid = signup.uid and signup.aid = activity.aid
+    </select>
 </mapper>

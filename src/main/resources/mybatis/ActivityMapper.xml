@@ -11,8 +11,8 @@
     </select>
     <insert id="insertActivity" parameterType="Activity">
         insert into activity
-            (aid, startData, endData, detail, teacher, sponsor, title)
-            value(#{aid},#{startData},#{endData},#{detail},#{teacher},#{sponsor},#{title})
+        (startDate,endDate,detail,teacher,sponsor,title)
+        value(#{startDate},#{endDate},#{detail},#{teacher},#{sponsor},#{title})
     </insert>
 
 </mapper>
