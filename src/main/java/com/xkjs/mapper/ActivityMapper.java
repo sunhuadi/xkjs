@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface ActivityMapper {
     List<Activity> findAll();
+    Activity findAById(int id);
 }

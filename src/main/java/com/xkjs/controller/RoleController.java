@@ -19,7 +19,7 @@ public class RoleController {
     public Object unauth() {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("code", "400");
-        map.put("msg", "未登录");
+        map.put("msg", "没有权限");
         return map;
     }
 
@@ -28,7 +28,7 @@ public class RoleController {
     public Object unlogin() {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("code", "401");
-        map.put("msg", "没有权限");
+        map.put("msg", "未登录");
         return map;
     }
 }

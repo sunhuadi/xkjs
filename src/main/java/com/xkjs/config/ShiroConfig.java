@@ -41,14 +41,15 @@ public class ShiroConfig {
 
         filterMap.put("/upload_news","roles[0,1]");
 
-        filterMap.put("/**","anon");
+        //filterMap.put("/**","anon");
         //filterMap.put("/upload_news","roles[1]");
         //放行
         filterMap.put("/css/**","anon");//必须在前
         filterMap.put("/fonts/**","anon");//必须在前
         filterMap.put("/image/**","anon");//必须在前
         filterMap.put("/js/**","anon");//必须在前
-        filterMap.put("/logins","anon");//必须在前
+        filterMap.put("/findAById","anon");//必须在前
+        filterMap.put("/findA","anon");//必须在前
 
 
         //拦截
