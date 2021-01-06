@@ -7,7 +7,7 @@ import javax.xml.soap.Text;
 
 @Data
 public class User {
-    int id;
+    int uid;
     String name;
     String password;
     String username;

@@ -5,7 +5,7 @@
 <mapper namespace="com.xkjs.mapper.UserMapper">
 
     <select id="getUserByName" resultType="User" parameterType="String">
-        select * from User
+        select * from user
         where binary username=#{username}
     </select>
 </mapper>

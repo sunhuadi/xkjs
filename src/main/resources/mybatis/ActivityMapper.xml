@@ -7,6 +7,12 @@
         select * from activity
     </select>
     <select id="findAById" resultType="Activity">
-        select * from activity where binary Id=#{id}
+        select * from activity where binary aid=#{id}
     </select>
+    <insert id="insertActivity" parameterType="Activity">
+        insert into activity
+            (aid, startData, endData, detail, teacher, sponsor, title)
+            value(#{aid},#{startData},#{endData},#{detail},#{teacher},#{sponsor},#{title})
+    </insert>
+
 </mapper>

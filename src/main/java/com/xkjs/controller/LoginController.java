@@ -27,6 +27,7 @@ public class LoginController {
         System.out.println(username);
         System.out.println(password);
         Subject subject = SecurityUtils.getSubject();
+
         //封装用户的登陆数据
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {

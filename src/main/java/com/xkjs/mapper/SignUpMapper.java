@@ -8,8 +8,6 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface ActivityMapper {
-    List<Activity> findAll();
-    Activity findAById(int id);
-    int insertActivity(Activity activity);
+public interface SignUpMapper {
+    List<Activity> findAllByUid(int uid);
 }

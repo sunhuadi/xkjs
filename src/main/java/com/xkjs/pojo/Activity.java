@@ -7,9 +7,9 @@ import javax.xml.soap.Text;
 
 @Data
 public class Activity {
-    int Id;
-    java.sql.Timestamp startData;
-    java.sql.Timestamp endData;
+    int aid;
+    java.sql.Timestamp startDate;
+    java.sql.Timestamp endDate;
     String detail;
     String teacher;
     String sponsor;
